@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0b0b0b;
+  --color-ink-2: #141414;
+  --color-paper: #f4f1ea;
+  --color-mute: #8a8a84;
+  --color-line: #2a2a28;
+  --color-hi: #c8e000;
+  --color-hi-ink: #14180a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-hi);
+  color: var(--color-hi-ink);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.7s ease both;
+}
