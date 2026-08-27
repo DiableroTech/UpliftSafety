@@ -1,3 +1,4 @@
+import PageHero from "../components/PageHero";
 import Tabs from "../components/Tabs";
 
 const hygiene = [
@@ -127,20 +128,15 @@ const hygiene = [
 export default function Hygiene() {
   return (
     <>
-      <section className="border-b border-line px-5 py-20">
-        <div className="mx-auto max-w-6xl">
-          <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            Hygiene services
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
-            What is in the air, on the line, in the body.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-paper/70">
-            Certified industrial hygiene. Pick a lane, then a topic — one panel,
-            not sixteen cards.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        kicker="Hygiene services"
+        title="Hygiene Services"
+        image="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=80"
+      >
+        Exposure control plans, air sampling, and assessments for heat and cold,
+        indoor air quality, welding fumes, asbestos, silica, and more — delivered
+        by a Certified Industrial Hygienist.
+      </PageHero>
 
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
         <Tabs items={hygiene} />

@@ -1,4 +1,5 @@
 import CourseCatalog from "../components/CourseCatalog";
+import PageHero from "../components/PageHero";
 
 const courses = [
   {
@@ -78,20 +79,15 @@ const courses = [
 export default function Training() {
   return (
     <>
-      <section className="border-b border-line px-5 py-20">
-        <div className="mx-auto max-w-6xl">
-          <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            Safety training
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
-            Courses people actually remember.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-paper/70">
-            Pick a course. Duration on the chip, detail in the panel — not nine
-            identical photo cards.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        kicker="Safety training"
+        title="Safety Training"
+        image="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80"
+      >
+        Providing solution-based safety services. WorkSafeBC-recognized courses
+        for leadership, confined space, fall protection, joint health and safety
+        committees, and asbestos certification.
+      </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
         <CourseCatalog courses={courses} />
       </section>

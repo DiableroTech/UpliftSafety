@@ -57,8 +57,8 @@ export default function NavDropdown({
       </NavLink>
       <div
         role="menu"
-        className={`absolute top-full left-0 z-[60] min-w-[13.5rem] border border-line bg-ink py-1 shadow-xl ${
-          open ? "visible opacity-100" : "pointer-events-none invisible opacity-0"
+        className={`absolute top-full left-0 z-[60] min-w-[13.5rem] border border-white/10 bg-ink/60 py-1 shadow-xl backdrop-blur-md transition-opacity duration-200 ease-out ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
         {items.map((item) => (
@@ -71,8 +71,8 @@ export default function NavDropdown({
             className={({ isActive }) =>
               `block px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] uppercase ${
                 isActive
-                  ? "bg-ink-2 text-hi"
-                  : "text-paper/70 hover:bg-ink-2 hover:text-paper"
+                  ? "bg-white/10 text-hi"
+                  : "text-paper/70 hover:bg-white/5 hover:text-paper"
               }`
             }
           >

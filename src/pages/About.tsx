@@ -100,15 +100,16 @@ export default function About() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/30" />
         <div className="relative mx-auto flex min-h-[36svh] max-w-6xl flex-col justify-end px-5 pb-12 pt-24">
           <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            About
+            Our story
           </p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
-            A partnership, not a call centre.
+            Meet regulatory requirements, protect workers, and mitigate loss.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/75">
-            Uplift Safety is an occupational health and safety consultancy based
-            in Kamloops, BC. We work with organizations across Western Canada —
-            from the shop floor to the regulator.
+            Uplift Safety is a partnership dedicated to providing the highest
+            level of expertise in occupational health and safety. Based in
+            Kamloops, BC, we serve virtually every industry from British
+            Columbia to Manitoba.
           </p>
         </div>
       </section>

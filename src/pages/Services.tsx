@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Accordion from "../components/Accordion";
+import PageHero from "../components/PageHero";
 
 const services = [
   {
@@ -92,20 +93,15 @@ const services = [
 export default function Services() {
   return (
     <>
-      <section className="border-b border-line px-5 py-20">
-        <div className="mx-auto max-w-6xl">
-          <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            Services
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
-            Consulting that holds up on site.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-paper/70">
-            Four lanes. Everything they offer still lives inside — without a
-            ten-row list.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        kicker="Safety services"
+        title="Safety Services"
+        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80"
+      >
+        Providing solution-based safety services. From occupational health and
+        safety programs and lockout procedures to COR audits, incident
+        investigations, and on-site advisors — customized for your workplace.
+      </PageHero>
 
       <section className="mx-auto max-w-6xl px-5 py-10 sm:px-0 sm:py-14">
         <Accordion items={services} />

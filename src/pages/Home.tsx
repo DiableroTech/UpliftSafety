@@ -41,12 +41,10 @@ export default function Home() {
             Kamloops · Western Canada
           </p>
           <h1 className="rise mt-5 max-w-3xl font-display text-5xl font-extrabold tracking-tight text-paper sm:text-7xl">
-            Industrial hygiene
-            <span className="block text-hi">and safety, done right.</span>
+            Elevate to Excellence
           </h1>
           <p className="rise mt-6 max-w-xl text-lg leading-relaxed text-paper/75">
-            Helping organizations meet the regulation, protect workers, and cut loss — without
-            the template brochure.
+            Helping organizations achieve safety excellence.
           </p>
           <div className="rise mt-10 flex flex-wrap gap-4">
             <Link

@@ -16,11 +16,11 @@ export default function Contact() {
             Contact
           </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Get a quote. Ask the hard question.
+            Contact Us
           </h1>
           <p className="mt-5 text-lg text-paper/70">
-            Hygiene, programs, or a crew that needs tickets. This form is demo-only — it does not
-            send. Use the numbers if you need them today.
+            To discuss your specific health and safety needs or to get a quote,
+            please contact us.
           </p>
           <dl className="mt-10 space-y-6">
             <div>
@@ -46,7 +46,7 @@ export default function Contact() {
 
         {sent ? (
           <p className="self-center font-display text-2xl text-hi">
-            Got it — in the real site this would land in their inbox.
+            Thank you. We will be in touch.
           </p>
         ) : (
           <form onSubmit={onSubmit} className="space-y-4 border border-line bg-ink-2 p-6 sm:p-8">

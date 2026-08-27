@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-line">
         <p className="mx-auto max-w-6xl px-5 py-5 text-xs tracking-wide text-mute">
-          © {new Date().getFullYear()} Uplift Safety · Demo UI · Kamloops · Kelowna · Edmonton ·
+          © {new Date().getFullYear()} Uplift Safety · Kamloops · Kelowna · Edmonton ·
           and beyond
         </p>
       </div>

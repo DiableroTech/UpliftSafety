@@ -1,4 +1,5 @@
 import CourseCatalog from "../components/CourseCatalog";
+import PageHero from "../components/PageHero";
 
 const courses = [
   {
@@ -46,20 +47,15 @@ const courses = [
 export default function Equipment() {
   return (
     <>
-      <section className="border-b border-line px-5 py-20">
-        <div className="mx-auto max-w-6xl">
-          <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            Mobile equipment
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
-            Tickets for the yard, not a slideshow.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-paper/70">
-            Ives and PTI curriculum. Same catalog as safety training — fewer
-            rows, same interaction.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        kicker="Mobile equipment"
+        title="Mobile Equipment Training"
+        image="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=80"
+      >
+        Forklift, boom lift, telehandler, scissor lift, and propane training
+        using the Ives and PTI curriculum, designed to CSA standards and
+        provincial safety regulations.
+      </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
         <CourseCatalog courses={courses} />
       </section>
