@@ -12,7 +12,7 @@ export type AccordionItem = {
 };
 
 export default function Accordion({ items }: { items: AccordionItem[] }) {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <div className="border-y border-line">
@@ -28,7 +28,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => setOpen(isOpen ? null : i)}
-              className={`flex w-full items-start gap-4 px-5 py-5 text-left transition-colors sm:items-center sm:gap-6 sm:px-8 ${
+              className={`flex w-full items-start gap-3 px-4 py-4 text-left transition-colors sm:items-center sm:gap-6 sm:px-8 sm:py-5 ${
                 isOpen ? "bg-ink-2" : "hover:bg-ink-2/60"
               }`}
             >
@@ -56,11 +56,11 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
             </button>
             <div
               id={panelId}
-              className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+              className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out ${
                 isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
               }`}
             >
-              <div className="overflow-hidden">
+              <div className="min-h-0 overflow-hidden">
                 <div className="space-y-8 border-t border-line bg-ink-2 px-5 py-6 sm:px-8 sm:pl-[4.75rem]">
                   {item.sections.map((section) => (
                     <div key={section.heading}>

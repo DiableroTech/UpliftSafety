@@ -94,20 +94,18 @@ export default function Services() {
   return (
     <>
       <PageHero
-        kicker="Safety services"
         title="Safety Services"
         image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80"
       >
-        Providing solution-based safety services. From occupational health and
-        safety programs and lockout procedures to COR audits, incident
-        investigations, and on-site advisors — customized for your workplace.
+        Providing solution-based safety services. Programs, lockout, COR audits,
+        investigations, and on-site advisors.
       </PageHero>
 
       <section className="mx-auto max-w-6xl px-5 py-10 sm:px-0 sm:py-14">
         <Accordion items={services} />
         <p className="mt-10 px-5 text-sm text-mute sm:px-8">
           Need industrial hygiene instead?{" "}
-          <Link to="/services/hygiene" className="text-hi hover:underline">
+          <Link viewTransition to="/services/hygiene" className="text-hi hover:underline">
             Hygiene services
           </Link>
         </p>

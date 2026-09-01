@@ -1,241 +1,132 @@
 # Uplift Safety — Site Brief
 
-Fill this in before any design or code. Incomplete sections are worse than short honest ones.
-
----
-
 ## 1. One-liner
 
-What this product is, what this site is for, in one sentence.
-
-> Example: Safety platform for [who]. This site is the demo: what it does, who it is for, why it matters.
-
-**Yours:**
-
-
----
+Occupational health and safety partnership in Kamloops. This site is a pitch demo: their business, their names, a sharper skin than Wix.
 
 ## 2. Page kind
 
-- [ ] Portfolio (developer / founder)
-- [x] Landing page
-- [ ] Studio / agency
-- [ ] Product demo
-- [ ] Other:
+- [x] Other: multi-page consultancy site (home, about, services, training, contact)
 
-**Primary job of the site:** (explain the product / book a demo / sign up / sell / all of the above)
+**Primary job:** look hired. A laptop demo they can click and recognize as themselves.
 
-
-**Secondary job:** (optional)
-
-
----
+**Secondary job:** prove the sitemap still works.
 
 ## 3. Audience
 
-Who is this actually for? Rank them. The top one picks the aesthetic.
+1. Safety managers / ops leaders at industrial sites in Western Canada (the aesthetic picker)
+2. Marsha and Jason, reviewing a redesign of their own site
+3. Procurement / COR / contractor prequal people who need credentials, not vibe
 
-1.
-2.
-3.
+After 10 seconds: this is a serious regional consultancy, not a template.
 
-What should they think after 10 seconds?
-
-
-What should they do before they leave? (email, book a call, sign up, share)
-
-
----
+Before they leave: talk to Jason or Marsha (email, phone, or the form).
 
 ## 4. Positioning
 
-**What the product claims to be:**
+**What the product claims to be:** occupational health, hygiene, safety programs, and training.
 
+**How you want it to be read:** sharp, trusted, regional, high-vis, quiet boast.
 
-**How you want it to be read:** (serious / calm / sharp / technical / human / …)
+**Boast level:** credentials and cities only. No fake metrics.
 
-
-**Boast level:** specific, no fake metrics, no “we revolutionize safety.”
-
-**What this is *not*:** (things this site should never imply)
-
-
----
+**What this is *not*:** a SaaS platform, a Wix checkerboard, a lime-everywhere construction meme.
 
 ## 5. Vibe
 
-Circle or write 3–6 words. Be picky. “Looks expensive” is not a vibe.
+**Keep:** sharp, trusted, regional, high-vis, quiet boast, industrial.
 
-| Keep | Kill |
-|------|------|
-| e.g. calm, trusted, sharp, institutional | e.g. playful, glassy, neon, SaaS-template |
+**Kill:** playful, glassy, neon, SaaS-template, checkerboard, equal photo cards, Inter, purple.
 
-**Your keep words:**
-
-
-**Your kill words:**
-
-
-Tone of the writing: first person? close third? short and dry? a bit of personality?
-
-
----
+Tone: their copy. Close third. Cut, don't invent.
 
 ## 6. References
 
-3–5 sites you actually like. URL + one sentence on *why* (layout, type, motion, voice). Not “it looks cool.”
+1. URL: https://www.upliftsafety.ca/
+   Why: source of truth for copy, people, services, phones.
+2. Pattern: industrial consultancy, not a product landing page.
 
-1. URL:
-   Why:
-2. URL:
-   Why:
-3. URL:
-   Why:
-4. URL:
-   Why:
-5. URL:
-   Why:
-
-Sites / patterns you actively dislike:
-
-
----
+Sites / patterns you actively dislike: Wix 50/50 tiles, three equal feature cards, slogan-only hero with no job description.
 
 ## 7. Design constraints
 
-**Color:** existing brand colors? or open? dark / light / both?
+**Color:** brand lime `#c8e000` on charcoal `#0b0b0b`. Dark only. Lime as tape, not paint.
 
+**Type:** Archivo display, Source Sans 3 body. Self-hosted.
 
-**Type:** any fonts you already use, or leave it open?
+**Motion:** considered. Page crossfade ~400ms. Slow hero scale. Accordion/tabs already. Not a loading movie.
 
+**Density:** packed enough for a services firm, with air around the hero.
 
-**Motion:** almost still / considered / scroll-driven / cinematic
+**Must never ship:** generic purple gradients, three equal feature cards, Inter-as-identity, lorem, fake metrics, stock “team collaborating.”
 
-
-**Density:** lots of air vs packed with product
-
-**Must never ship:** generic purple gradients, three feature cards, Inter-as-the-whole-identity, lorem, fake metrics, stock “team collaborating” photos.
-
-**Your extra nos:**
-
-
----
+**Extra nos:** em-dashes in UI, eyebrow on every section, rewriting their names or credentials.
 
 ## 8. Site map
 
-Mark what ships in v1. Cut the rest.
-
-| Section | v1? | Notes |
-|---------|-----|--------|
-| Hero | yes | |
-| Problem / why it exists | yes | |
-| Product / how it works | yes | |
-| Features | maybe | |
-| Demo / interactive | maybe | |
-| Proof / customers / outcomes | maybe | |
-| About | maybe | |
-| Contact / CTA | yes | |
-| Other: | | |
-
-Any pages beyond a single long scroll? (e.g. `/demo`, `/pricing`)
-
-
----
+| Route | v1 |
+|-------|----|
+| `/` Home | yes |
+| `/about` | yes |
+| `/services` Safety | yes |
+| `/services/hygiene` | yes |
+| `/training` | yes |
+| `/training/equipment` | yes |
+| `/contact` | yes |
 
 ## 9. Product
 
-What it is, in plain language. Role + outcome beat a feature list.
-
 **Name:** Uplift Safety
 
-**One-line what it is:**
+**One-line:** Occupational health and safety partnership. Kamloops, BC. Western Canada.
 
-**Who it is for:**
+**Who it is for:** employers who need programs, hygiene, audits, and training that will stand up to a regulator.
 
-**The problem it solves:**
+**The problem it solves:** they do not have the time or the CIH/CRSP on staff.
 
-**How it works (3–6 steps or bullets):**
+**How it works:** hygiene → programs/audits → training. Asbestos certification is the featured offer.
 
+**What a visitor should try:** click the real sitemap. Form is UI-only.
 
-**What a visitor should be able to try in this demo:**
-
-
-**What is out of scope for v1:**
-
-
----
+**Out of scope:** CMS, maps, chat, calendar, real form mail, online-training page.
 
 ## 10. Copy / voice
 
-Short pitch in the voice of the site (4–8 sentences, or bullets you will turn into copy):
-
-
-Facts that should appear somewhere (company, location, stage, whatever you actually want public):
-
-
-Personality you want on the page vs keep off the page:
-
-
----
+Use their lines. Hero: “Elevate to Excellence.” People bios stay theirs. Cut length, do not punch up.
 
 ## 11. Proof
 
-Specific only. Numbers, customers, launches, press — only if you will stand behind them.
-
--
--
--
-
----
+- Marsha Bell, MSc, CIH. Canada’s Top Women in Safety, 2023.
+- Jason Zaffino, MBA, CRSP. Safety innovation award (lockout), 2021. Top safety leaders under 35, 2023.
+- WorkSafeBC asbestos levels 1–3. COR / OSSE. Ives / PTI equipment.
 
 ## 12. Contact & links
 
-**Primary CTA:** email / calendar / form / signup
+**Primary CTA:** Talk to us → `/contact`
 
-Handle | URL | Show on site?
--------|-----|--------------
-Email | |
-Website | |
-GitHub | |
-X / Twitter | |
-LinkedIn | |
-Calendly / booking | |
-Other | |
-
----
+| Handle | URL | Show |
+|--------|-----|------|
+| Jason | jason.zaffino@upliftsafety.ca · 250-540-3511 | yes |
+| Marsha | marsha.bell@upliftsafety.ca · 778-257-1863 | yes |
+| Website | https://www.upliftsafety.ca/ | no (this is the demo) |
 
 ## 13. Assets on hand
 
-What already exists. Missing assets become placeholders; do not invent them.
-
-- [ ] Wordmark / logo
-- [ ] Color values
-- [ ] Product screenshots
-- [ ] Icons / illustrations
-- [ ] Video / demo clips
-- [ ] Domain (what is it?):
-- [ ] Other:
-
-Dump files into `content/` when you have them.
-
----
+- [x] Wordmark (twin peaks SVG)
+- [x] Color values (lime / charcoal)
+- [x] Portraits: `public/123.avif` Marsha, `public/1234.avif` Jason
+- [ ] Their site photography (using Unsplash jobsite until they send files)
 
 ## 14. Practical
 
-**Domain:**
+**Stack:** Vite + React + TypeScript + Tailwind v4.
 
+**v1 done:** five-plus routes, no checkerboard, one lime primary CTA, looks like a pitch on a 13" laptop.
 
-**Hosting guess:** Vercel / Cloudflare / other / undecided
+## 15. Design read
 
-**Stack guess:** Vite + React + TypeScript + Tailwind. Change this if you already care.
+Reading this as: redesign of an industrial OHS consultancy site for Western Canada safety managers, with a high-vis / trusted / sharp language, leaning toward native CSS + Tailwind (not a product design system).
 
-**v1 definition of done:** (e.g. live demo, hero + product + CTA, looks like the brand)
+**Mode:** Redesign, preserve. Keep lime, logo, Archivo, dark theme, routes, their copy.
 
-
----
-
-## 15. Design read (leave blank)
-
-Filled after this brief is complete, before any UI is built.
-
-> Reading this as: ___ for ___, with a ___ language, leaning toward ___.
+**Dials:** `DESIGN_VARIANCE: 5` · `MOTION_INTENSITY: 4` · `VISUAL_DENSITY: 4`

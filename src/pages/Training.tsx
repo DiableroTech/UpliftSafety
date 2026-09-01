@@ -15,7 +15,7 @@ const courses = [
     duration: "1 day",
     body: [
       "This one-day confined space training utilizes the 3M course curriculum and is recognized by all provincial regulators. It addresses principles and concepts of confined space safety and examines the roles of the attendant and entrant.",
-      "A variety of instructional techniques — challenge questions, workbook exercises, case studies, and practical applications — are used to educate participants. Suited for confined space attendants, entrants, and supervisors of confined space entries.",
+      "A variety of instructional techniques (challenge questions, workbook exercises, case studies, and practical applications) are used to educate participants. Suited for confined space attendants, entrants, and supervisors of confined space entries.",
     ],
   },
   {
@@ -46,7 +46,7 @@ const courses = [
     title: "Equipment Safeguarding Training",
     duration: "4–8h",
     body: [
-      "Presented in a 4 or 8 hour format focusing specifically on equipment hazards. Based on the CSA Z432 standard and applicable provincial regulations — a deep dive into equipment hazards, associated risk rating, and control measures.",
+      "Presented in a 4 or 8 hour format focusing specifically on equipment hazards. Based on the CSA Z432 standard and applicable provincial regulations: a deep dive into equipment hazards, associated risk rating, and control measures.",
       "We introduce the CSA Z432 safeguarding risk assessment tool and complex guarding options such as light curtains, presence sensing devices, and safety-rated equipment interlocks.",
     ],
   },
@@ -55,7 +55,7 @@ const courses = [
     duration: "2 days",
     body: [
       "Front-line supervision is the most important position in the organization. Supervisors work directly with the front line to achieve the organization's goals. They need to understand their role, legal rights and responsibilities, and how important it is to be present in the workplace.",
-      "Using adult learning principles, this 2 day training teaches supervisors how to be safety leaders, engage the workforce, and drive positive operational results — with the confidence to lead in today's evolving workplace.",
+      "Using adult learning principles, this 2 day training teaches supervisors how to be safety leaders, engage the workforce, and drive positive operational results, with the confidence to lead in today's evolving workplace.",
     ],
   },
   {
@@ -80,13 +80,11 @@ export default function Training() {
   return (
     <>
       <PageHero
-        kicker="Safety training"
         title="Safety Training"
         image="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80"
       >
-        Providing solution-based safety services. WorkSafeBC-recognized courses
-        for leadership, confined space, fall protection, joint health and safety
-        committees, and asbestos certification.
+        WorkSafeBC-recognized courses for leadership, confined space, fall
+        protection, committees, and asbestos certification.
       </PageHero>
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
         <CourseCatalog courses={courses} />

@@ -1,3 +1,11 @@
+@import "@fontsource/archivo/500.css";
+@import "@fontsource/archivo/600.css";
+@import "@fontsource/archivo/700.css";
+@import "@fontsource/archivo/800.css";
+@import "@fontsource/source-sans-3/400.css";
+@import "@fontsource/source-sans-3/500.css";
+@import "@fontsource/source-sans-3/600.css";
+@import "@fontsource/source-sans-3/400-italic.css";
 @import "tailwindcss";
 
 @theme {
@@ -10,10 +18,12 @@
   --color-line: #2a2a28;
   --color-hi: #c8e000;
   --color-hi-ink: #14180a;
+  --radius-none: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 html,
@@ -34,17 +44,127 @@ body {
   color: var(--color-hi-ink);
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
+:focus-visible {
+  outline: 1px solid var(--color-hi);
+  outline-offset: 3px;
+}
+
+main {
+  view-transition-name: page;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(page) {
+  animation: 400ms ease-out both page-out;
+}
+
+::view-transition-new(page) {
+  animation: 400ms ease-in both page-in;
+}
+
+@keyframes page-out {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
   }
 }
 
-.rise {
-  animation: rise 0.7s ease both;
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes enter-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes enter-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.enter-slide {
+  animation: enter-slide 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.enter-fade {
+  animation: enter-fade 1s ease both;
+}
+
+.hero-media {
+  animation: drift 22s ease-out forwards;
+}
+
+.hero-reveal {
+  animation:
+    hero-fade 1.5s ease both,
+    drift 22s ease-out forwards;
+}
+
+.d1 {
+  animation-delay: 0.12s;
+}
+
+.d2 {
+  animation-delay: 0.28s;
+}
+
+.d3 {
+  animation-delay: 0.5s;
+}
+
+.d4 {
+  animation-delay: 0.68s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .enter-slide,
+  .enter-fade,
+  .hero-media,
+  .hero-reveal {
+    animation: none;
+  }
+
+  ::view-transition-old(page),
+  ::view-transition-new(page) {
+    animation: none;
+  }
 }

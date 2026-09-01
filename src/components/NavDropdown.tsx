@@ -1,3 +1,4 @@
+import { ArrowSquareOut, CaretDown } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -5,6 +6,7 @@ export type DropLink = {
   to: string;
   label: string;
   end?: boolean;
+  external?: boolean;
 };
 
 function linkClass(isActive: boolean) {
@@ -43,42 +45,62 @@ export default function NavDropdown({
       onMouseLeave={() => setOpen(false)}
     >
       <NavLink
+        viewTransition
         to={to}
-        className={linkClass(active)}
+        className={`${linkClass(active)} inline-flex items-center gap-1.5 whitespace-nowrap`}
         onClick={() => setOpen(false)}
       >
         {label}
-        <span className="ml-1 inline-block text-[9px]" aria-hidden>
-          ▾
-        </span>
+        <CaretDown size={12} weight="bold" className="shrink-0 opacity-80" aria-hidden />
         {active && (
           <span className="absolute -bottom-1 left-0 h-px w-full bg-hi" />
         )}
       </NavLink>
       <div
         role="menu"
-        className={`absolute top-full left-0 z-[60] min-w-[13.5rem] border border-white/10 bg-ink/60 py-1 shadow-xl backdrop-blur-md transition-opacity duration-200 ease-out ${
+        className={`absolute top-full left-0 z-[60] min-w-[17rem] border border-white/10 bg-ink/60 py-1 shadow-xl backdrop-blur-md transition-opacity duration-200 ease-out ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        {items.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            role="menuitem"
-            end={item.end}
-            onClick={() => setOpen(false)}
-            className={({ isActive }) =>
-              `block px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] uppercase ${
-                isActive
-                  ? "bg-white/10 text-hi"
-                  : "text-paper/70 hover:bg-white/5 hover:text-paper"
-              }`
-            }
-          >
-            {item.label}
-          </NavLink>
-        ))}
+        {items.map((item) =>
+          item.external ? (
+            <a
+              key={item.to}
+              href={item.to}
+              role="menuitem"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] text-paper/70 uppercase hover:bg-white/5 hover:text-paper"
+            >
+              {item.label}
+              <ArrowSquareOut
+                size={13}
+                weight="bold"
+                className="shrink-0 opacity-70"
+                aria-hidden
+              />
+            </a>
+          ) : (
+            <NavLink
+              key={item.to}
+              viewTransition
+              to={item.to}
+              role="menuitem"
+              end={item.end}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `block px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] uppercase ${
+                  isActive
+                    ? "bg-white/10 text-hi"
+                    : "text-paper/70 hover:bg-white/5 hover:text-paper"
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ),
+        )}
       </div>
     </div>
   );

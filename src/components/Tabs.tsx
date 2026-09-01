@@ -38,7 +38,7 @@ export default function Tabs({ items }: { items: TabItem[] }) {
               role="tab"
               aria-selected={isOn}
               onClick={() => selectTab(i)}
-              className={`relative px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] uppercase transition-colors sm:px-5 ${
+              className={`relative px-3 py-2.5 font-display text-[10px] font-semibold tracking-[0.14em] uppercase transition-colors sm:px-5 sm:py-3 sm:text-[11px] sm:tracking-[0.16em] ${
                 isOn ? "text-hi" : "text-paper/55 hover:text-paper"
               }`}
             >
@@ -66,7 +66,7 @@ export default function Tabs({ items }: { items: TabItem[] }) {
                   onClick={() => setSub(i)}
                   className={`border px-3 py-1.5 font-display text-[10px] font-semibold tracking-[0.12em] uppercase ${
                     on
-                      ? "border-hi bg-hi text-hi-ink"
+                      ? "border-hi text-hi"
                       : "border-line text-paper/70 hover:border-hi hover:text-hi"
                   }`}
                 >

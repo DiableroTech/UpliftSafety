@@ -71,7 +71,7 @@ const hygiene = [
       {
         heading: "Welding Fumes",
         body: [
-          "Worksites where welding — TIG, MIG, MCAW, and others — occurs may expose workers to hazardous concentrations of antimony, beryllium, cadmium, chromium, copper, iron oxide, lead, manganese, molybdenum, nickel, vanadium, and zinc oxide. Our certified hygienist can sample worker exposure to welding fumes, perform a welding fume assessment, assess ventilation requirements and recommend other control measures. Sampling and recommendations can be integrated into your company's safety program so you meet regulatory requirements.",
+          "Worksites where welding (TIG, MIG, MCAW, and others) occurs may expose workers to hazardous concentrations of antimony, beryllium, cadmium, chromium, copper, iron oxide, lead, manganese, molybdenum, nickel, vanadium, and zinc oxide. Our certified hygienist can sample worker exposure to welding fumes, perform a welding fume assessment, assess ventilation requirements and recommend other control measures. Sampling and recommendations can be integrated into your company's safety program so you meet regulatory requirements.",
         ],
       },
     ],
@@ -94,7 +94,7 @@ const hygiene = [
       {
         heading: "Lead",
         body: [
-          "Our industrial hygienists identify potential sources and pathways of lead exposure — work processes, materials, equipment, and areas of concern. We conduct exposure assessments, then recommend and develop control strategies to minimize or eliminate lead exposure. Hygienists can also collaborate with healthcare professionals to establish and maintain medical surveillance programs.",
+          "Our industrial hygienists identify potential sources and pathways of lead exposure: work processes, materials, equipment, and areas of concern. We conduct exposure assessments, then recommend and develop control strategies to minimize or eliminate lead exposure. Hygienists can also collaborate with healthcare professionals to establish and maintain medical surveillance programs.",
         ],
       },
       {
@@ -106,7 +106,7 @@ const hygiene = [
       {
         heading: "Isocyanates",
         body: [
-          "Isocyanates are used in polyurethane production and pose significant health hazards. Air sampling for isocyanates is specialized and must be performed by an industrial hygienist familiar with their unique properties and field instability. We place sampling devices where isocyanates are used or released — spray booths, production lines — and collect representative samples, then recommend control strategies for regulatory compliance.",
+          "Isocyanates are used in polyurethane production and pose significant health hazards. Air sampling for isocyanates is specialized and must be performed by an industrial hygienist familiar with their unique properties and field instability. We place sampling devices where isocyanates are used or released (spray booths, production lines) and collect representative samples, then recommend control strategies for regulatory compliance.",
         ],
       },
       {
@@ -129,13 +129,11 @@ export default function Hygiene() {
   return (
     <>
       <PageHero
-        kicker="Hygiene services"
         title="Hygiene Services"
         image="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=80"
       >
-        Exposure control plans, air sampling, and assessments for heat and cold,
-        indoor air quality, welding fumes, asbestos, silica, and more — delivered
-        by a Certified Industrial Hygienist.
+        Exposure control, air sampling, and assessments. Delivered by a
+        Certified Industrial Hygienist.
       </PageHero>
 
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">

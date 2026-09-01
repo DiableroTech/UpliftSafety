@@ -9,16 +9,13 @@ export default function Contact() {
   }
 
   return (
-    <section className="px-5 py-20">
+    <section className="px-5 py-12 sm:py-20">
       <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-2">
         <div>
-          <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            Contact
-          </p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <h1 className="font-display text-3xl font-extrabold tracking-tight sm:text-5xl">
             Contact Us
           </h1>
-          <p className="mt-5 text-lg text-paper/70">
+          <p className="mt-5 max-w-[65ch] text-lg text-paper/70">
             To discuss your specific health and safety needs or to get a quote,
             please contact us.
           </p>
@@ -26,7 +23,7 @@ export default function Contact() {
             <div>
               <dt className="font-display text-sm font-bold">Jason Zaffino</dt>
               <dd className="mt-1 text-paper/70">
-                <a className="hover:text-hi" href="mailto:jason.zaffino@upliftsafety.ca">
+                <a className="break-all hover:text-hi" href="mailto:jason.zaffino@upliftsafety.ca">
                   jason.zaffino@upliftsafety.ca
                 </a>
                 <span className="block">250-540-3511</span>
@@ -35,7 +32,7 @@ export default function Contact() {
             <div>
               <dt className="font-display text-sm font-bold">Marsha Bell</dt>
               <dd className="mt-1 text-paper/70">
-                <a className="hover:text-hi" href="mailto:marsha.bell@upliftsafety.ca">
+                <a className="break-all hover:text-hi" href="mailto:marsha.bell@upliftsafety.ca">
                   marsha.bell@upliftsafety.ca
                 </a>
                 <span className="block">778-257-1863</span>
@@ -51,39 +48,43 @@ export default function Contact() {
         ) : (
           <form onSubmit={onSubmit} className="space-y-4 border border-line bg-ink-2 p-6 sm:p-8">
             <div className="grid gap-4 sm:grid-cols-2">
-              <label className="block text-xs tracking-wide text-mute uppercase">
+              <label className="block text-sm text-paper/80">
                 First name
                 <input
                   required
                   name="first"
+                  autoComplete="given-name"
                   className="mt-2 w-full border border-line bg-ink px-3 py-2.5 text-paper outline-none focus:border-hi"
                 />
               </label>
-              <label className="block text-xs tracking-wide text-mute uppercase">
+              <label className="block text-sm text-paper/80">
                 Last name
                 <input
                   name="last"
+                  autoComplete="family-name"
                   className="mt-2 w-full border border-line bg-ink px-3 py-2.5 text-paper outline-none focus:border-hi"
                 />
               </label>
             </div>
-            <label className="block text-xs tracking-wide text-mute uppercase">
+            <label className="block text-sm text-paper/80">
               Email
               <input
                 required
                 type="email"
                 name="email"
+                autoComplete="email"
                 className="mt-2 w-full border border-line bg-ink px-3 py-2.5 text-paper outline-none focus:border-hi"
               />
             </label>
-            <label className="block text-xs tracking-wide text-mute uppercase">
+            <label className="block text-sm text-paper/80">
               Phone
               <input
                 name="phone"
+                autoComplete="tel"
                 className="mt-2 w-full border border-line bg-ink px-3 py-2.5 text-paper outline-none focus:border-hi"
               />
             </label>
-            <label className="block text-xs tracking-wide text-mute uppercase">
+            <label className="block text-sm text-paper/80">
               Message
               <textarea
                 required
@@ -94,7 +95,7 @@ export default function Contact() {
             </label>
             <button
               type="submit"
-              className="bg-hi px-6 py-3 font-display text-xs font-bold tracking-[0.18em] text-hi-ink uppercase"
+              className="bg-hi px-6 py-3 font-display text-xs font-bold tracking-[0.18em] text-hi-ink uppercase transition-transform duration-150 active:scale-[0.98]"
             >
               Send
             </button>

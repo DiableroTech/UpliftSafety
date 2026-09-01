@@ -33,7 +33,7 @@ const people = [
     creds: "MBA, CRSP",
     photo: "/1234.avif",
     preview:
-      "Jason provides strategic and practical advice to employers on health and safety issues in the workplace. Jason's services are rooted in his ability to take complex equipment and process risks and simplify solutions into easily understood and operational programs. He does this by thoroughly understanding his clients' objectives – an understanding that he reaches through collaboration, by asking the right questions, with a keen awareness of his clients' safety needs. Jason is frequently engaged for workplace safety policy and procedure development, conducting workplace safety culture assessments, and delivering impactful safety leadership training.",
+      "Jason provides strategic and practical advice to employers on health and safety issues in the workplace. Jason's services are rooted in his ability to take complex equipment and process risks and simplify solutions into easily understood and operational programs. He does this by thoroughly understanding his clients' objectives, an understanding that he reaches through collaboration, by asking the right questions, with a keen awareness of his clients' safety needs. Jason is frequently engaged for workplace safety policy and procedure development, conducting workplace safety culture assessments, and delivering impactful safety leadership training.",
     more: [
       "Jason holds a Masters degree in Business Administration (MBA) with a specialty in Safety Leadership, and holds the Canadian Registered Safety Professional (CRSP) designation. Jason has extensive experience with administrative bodies such as WorksafeBC, OHS Alberta, and OHS Saskatchewan. In 2021 Jason received international recognition winning a safety innovation award for lockout and in 2023 was recognized as one of Canada's top safety leaders under 35.",
       "Jason is an avid sports and outdoor enthusiast. Away from work he can be found at a local golf course, ski hill or hockey arena. He spends part of his time in his hometown of Jasper, Alberta.",
@@ -46,18 +46,15 @@ function PersonCard({ person }: { person: (typeof people)[number] }) {
 
   return (
     <article className="bg-ink-2">
-      <div className="p-8 sm:p-12">
+      <div className="p-6 sm:p-12">
         <img
           src={person.photo}
           alt={person.name}
           className="mb-6 aspect-[4/5] w-3/5 max-w-[240px] object-cover object-top"
         />
-        <p className="font-display text-[11px] tracking-[0.2em] text-hi uppercase">
-          Principal consultant
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-bold">{person.name}</h2>
+        <h2 className="font-display text-3xl font-bold">{person.name}</h2>
         <p className="mt-1 text-sm text-mute">{person.creds}</p>
-        <p className="mt-6 text-[15px] leading-relaxed text-paper/75">
+        <p className="mt-6 max-w-[65ch] text-[15px] leading-relaxed text-paper/75">
           {person.preview}
         </p>
         <div
@@ -69,7 +66,7 @@ function PersonCard({ person }: { person: (typeof people)[number] }) {
             {person.more.map((para) => (
               <p
                 key={para.slice(0, 40)}
-                className="mt-4 text-[15px] leading-relaxed text-paper/75"
+                className="mt-4 max-w-[65ch] text-[15px] leading-relaxed text-paper/75"
               >
                 {para}
               </p>
@@ -81,7 +78,7 @@ function PersonCard({ person }: { person: (typeof people)[number] }) {
           onClick={() => setOpen((v) => !v)}
           className="mt-6 font-display text-[11px] font-semibold tracking-[0.16em] text-hi uppercase hover:underline"
         >
-          {open ? "Read less" : "Read more →"}
+          {open ? "Read less" : "Read more"}
         </button>
       </div>
     </article>
@@ -91,27 +88,30 @@ function PersonCard({ person }: { person: (typeof people)[number] }) {
 export default function About() {
   return (
     <>
-      <section className="relative isolate min-h-[36svh] overflow-hidden">
+      <section className="relative isolate min-h-[32svh] overflow-hidden sm:min-h-[40svh]">
         <img
           src={heroImg}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+          className="hero-reveal absolute inset-0 h-full w-full object-cover object-[center_30%]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/30" />
-        <div className="relative mx-auto flex min-h-[36svh] max-w-6xl flex-col justify-end px-5 pb-12 pt-24">
-          <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            Our story
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
+        <div className="relative mx-auto flex min-h-[32svh] max-w-6xl flex-col justify-end px-5 pt-12 pb-10 sm:min-h-[40svh] sm:pt-16 sm:pb-12">
+          <h1 className="enter-slide max-w-3xl font-display text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             Meet regulatory requirements, protect workers, and mitigate loss.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/75">
-            Uplift Safety is a partnership dedicated to providing the highest
-            level of expertise in occupational health and safety. Based in
-            Kamloops, BC, we serve virtually every industry from British
-            Columbia to Manitoba.
+          <p className="enter-slide d2 mt-4 max-w-[65ch] text-base leading-relaxed text-paper/75 sm:mt-5 sm:text-lg">
+            A Kamloops partnership. Occupational health and safety from British Columbia to Manitoba.
           </p>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
+        <p className="max-w-[65ch] text-[15px] leading-relaxed text-paper/75">
+          Uplift Safety is a partnership dedicated to providing the highest
+          level of expertise in occupational health and safety. Based in
+          Kamloops, BC, we serve virtually every industry from British
+          Columbia to Manitoba.
+        </p>
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-px bg-line px-5 sm:grid-cols-2">
@@ -122,10 +122,7 @@ export default function About() {
 
       <section className="px-5 py-20">
         <div className="mx-auto max-w-6xl">
-          <p className="font-display text-[11px] font-semibold tracking-[0.24em] text-hi uppercase">
-            Serving
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold">
+          <h2 className="font-display text-3xl font-bold">
             Western Canada. And beyond.
           </h2>
           <ul className="mt-10 grid grid-cols-2 gap-y-3 text-paper/80 sm:grid-cols-5">

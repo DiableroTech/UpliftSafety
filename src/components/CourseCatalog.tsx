@@ -21,7 +21,7 @@ export default function CourseCatalog({ courses }: { courses: Course[] }) {
               key={item.title}
               type="button"
               onClick={() => setActive(i)}
-              className={`flex w-full items-center gap-3 border-b border-line px-4 py-3.5 text-left last:border-b-0 sm:gap-4 sm:px-5 ${
+              className={`flex w-full items-start gap-3 border-b border-line px-3 py-3.5 text-left last:border-b-0 sm:items-center sm:gap-4 sm:px-5 ${
                 on ? "bg-ink-2" : "hover:bg-ink-2/50"
               }`}
             >

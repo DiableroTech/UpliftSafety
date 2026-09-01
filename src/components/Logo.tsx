@@ -5,7 +5,7 @@ export default function Logo({ className = "" }: { className?: string }) {
         <path d="M2 26 L14 4 L20 16" fill="none" stroke="#c8e000" strokeWidth="2.4" />
         <path d="M14 4 L20 16 L26 4 L38 26" fill="none" stroke="currentColor" strokeWidth="2.4" />
       </svg>
-      <span className="font-display text-[15px] font-bold tracking-[0.14em] uppercase">
+      <span className="whitespace-nowrap font-display text-[15px] font-bold tracking-[0.14em] uppercase">
         Uplift Safety
       </span>
     </span>
