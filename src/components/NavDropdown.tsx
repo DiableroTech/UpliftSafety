@@ -11,7 +11,7 @@ export type DropLink = {
 
 function linkClass(isActive: boolean) {
   return `relative font-display text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors ${
-    isActive ? "text-hi" : "text-paper/70 hover:text-paper"
+    isActive ? "text-blue" : "text-ink/80 hover:text-blue"
   }`;
 }
 
@@ -47,18 +47,16 @@ export default function NavDropdown({
       <NavLink
         viewTransition
         to={to}
+        data-nav=""
         className={`${linkClass(active)} inline-flex items-center gap-1.5 whitespace-nowrap`}
         onClick={() => setOpen(false)}
       >
         {label}
         <CaretDown size={12} weight="bold" className="shrink-0 opacity-80" aria-hidden />
-        {active && (
-          <span className="absolute -bottom-1 left-0 h-px w-full bg-hi" />
-        )}
       </NavLink>
       <div
         role="menu"
-        className={`absolute top-full left-0 z-[60] min-w-[17rem] border border-white/10 bg-ink/60 py-1 shadow-xl backdrop-blur-md transition-opacity duration-200 ease-out ${
+        className={`absolute top-full left-0 z-[60] min-w-[17rem] border border-line bg-paper py-1 shadow-lg transition-opacity duration-200 ease-out ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -71,7 +69,7 @@ export default function NavDropdown({
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2 px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] text-paper/70 uppercase hover:bg-white/5 hover:text-paper"
+              className="flex items-center gap-2 px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] text-ink/80 uppercase hover:bg-blue/5 hover:text-blue"
             >
               {item.label}
               <ArrowSquareOut
@@ -92,8 +90,8 @@ export default function NavDropdown({
               className={({ isActive }) =>
                 `block px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] uppercase ${
                   isActive
-                    ? "bg-white/10 text-hi"
-                    : "text-paper/70 hover:bg-white/5 hover:text-paper"
+                    ? "bg-blue text-white"
+                    : "text-ink/80 hover:bg-blue/5 hover:text-blue"
                 }`
               }
             >

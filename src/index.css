@@ -11,13 +11,12 @@
 @theme {
   --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
-  --color-ink: #0b0b0b;
-  --color-ink-2: #141414;
-  --color-paper: #f4f1ea;
-  --color-mute: #8a8a84;
-  --color-line: #2a2a28;
-  --color-hi: #c8e000;
-  --color-hi-ink: #14180a;
+  --color-paper: #f7f6f4;
+  --color-blue: #175873;
+  --color-accent: #ddf600;
+  --color-ink: #3d4248;
+  --color-mute: #454d52;
+  --color-line: #b9b8b4;
   --radius-none: 0;
 }
 
@@ -34,18 +33,13 @@ body,
 
 body {
   margin: 0;
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
-::selection {
-  background: var(--color-hi);
-  color: var(--color-hi-ink);
-}
-
 :focus-visible {
-  outline: 1px solid var(--color-hi);
+  outline: 2px solid var(--color-blue);
   outline-offset: 3px;
 }
 
@@ -149,6 +143,18 @@ main {
 
 .d4 {
   animation-delay: 0.68s;
+}
+
+.seq1 {
+  animation-delay: 0.4s;
+}
+
+.seq2 {
+  animation-delay: 0.8s;
+}
+
+.seq3 {
+  animation-delay: 1.2s;
 }
 
 @media (prefers-reduced-motion: reduce) {

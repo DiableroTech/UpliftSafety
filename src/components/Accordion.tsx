@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export type AccordionSection = {
-  heading: string;
+  heading?: string;
   body: string[];
 };
 
@@ -29,10 +29,10 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
               aria-controls={panelId}
               onClick={() => setOpen(isOpen ? null : i)}
               className={`flex w-full items-start gap-3 px-4 py-4 text-left transition-colors sm:items-center sm:gap-6 sm:px-8 sm:py-5 ${
-                isOpen ? "bg-ink-2" : "hover:bg-ink-2/60"
+                isOpen ? "bg-blue/10" : "hover:bg-blue/5"
               }`}
             >
-              <span className="mt-1 font-display text-[11px] tracking-[0.18em] text-hi sm:mt-0">
+              <span className="mt-1 font-display text-[11px] tracking-[0.18em] text-blue sm:mt-0">
                 {n}
               </span>
               <span className="flex-1">
@@ -46,7 +46,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
                 )}
               </span>
               <span
-                className={`font-display text-hi transition-transform duration-300 ${
+                className={`font-display text-blue transition-transform duration-300 ${
                   isOpen ? "rotate-45" : ""
                 }`}
                 aria-hidden
@@ -61,16 +61,20 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
               }`}
             >
               <div className="min-h-0 overflow-hidden">
-                <div className="space-y-8 border-t border-line bg-ink-2 px-5 py-6 sm:px-8 sm:pl-[4.75rem]">
+                <div className="space-y-8 border-t border-line bg-blue/[0.04] px-5 py-6 sm:px-8 sm:pl-[4.75rem]">
                   {item.sections.map((section) => (
-                    <div key={section.heading}>
-                      <h3 className="font-display text-sm font-semibold tracking-wide text-hi">
-                        {section.heading}
-                      </h3>
+                    <div key={section.heading ?? section.body[0].slice(0, 48)}>
+                      {section.heading ? (
+                        <h3 className="font-display text-sm font-semibold tracking-wide text-blue">
+                          {section.heading}
+                        </h3>
+                      ) : null}
                       {section.body.map((para) => (
                         <p
                           key={para.slice(0, 48)}
-                          className="mt-2 text-[15px] leading-relaxed text-paper/75"
+                          className={`text-[15px] leading-relaxed text-ink ${
+                            section.heading ? "mt-2" : "mt-4 first:mt-0"
+                          }`}
                         >
                           {para}
                         </p>

@@ -16,11 +16,11 @@ function ScrollToTop() {
 
 export default function Layout() {
   return (
-    <div className="min-h-svh bg-ink text-paper">
+    <div className="min-h-svh bg-paper text-ink">
       <ScrollToTop />
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-20 focus:z-[70] focus:bg-hi focus:px-3 focus:py-2 focus:font-display focus:text-xs focus:font-bold focus:tracking-[0.16em] focus:text-hi-ink focus:uppercase"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-20 focus:z-[70] focus:bg-accent focus:px-3 focus:py-2 focus:font-display focus:text-xs focus:font-bold focus:tracking-[0.16em] focus:text-ink focus:uppercase"
       >
         Skip to content
       </a>

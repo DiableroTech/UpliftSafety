@@ -22,28 +22,28 @@ export default function CourseCatalog({ courses }: { courses: Course[] }) {
               type="button"
               onClick={() => setActive(i)}
               className={`flex w-full items-start gap-3 border-b border-line px-3 py-3.5 text-left last:border-b-0 sm:items-center sm:gap-4 sm:px-5 ${
-                on ? "bg-ink-2" : "hover:bg-ink-2/50"
+                on ? "bg-blue/10" : "hover:bg-blue/5"
               }`}
             >
-              <span className="font-display text-[10px] tracking-[0.16em] text-hi">
+              <span className="font-display text-[10px] tracking-[0.16em] text-blue">
                 {n}
               </span>
               <span
                 className={`flex-1 font-display text-sm font-semibold tracking-tight sm:text-[15px] ${
-                  on ? "text-paper" : "text-paper/75"
+                  on ? "text-ink" : "text-mute"
                 }`}
               >
                 {item.title}
               </span>
-              <span className="shrink-0 border border-hi/50 px-2 py-0.5 font-display text-[9px] font-semibold tracking-[0.12em] text-hi uppercase">
+              <span className="shrink-0 border border-blue/40 px-2 py-0.5 font-display text-[9px] font-semibold tracking-[0.12em] text-blue uppercase">
                 {item.duration}
               </span>
             </button>
           );
         })}
       </div>
-      <div className="bg-ink-2 px-5 py-8 lg:col-span-7 sm:px-8 lg:sticky lg:top-16 lg:self-start">
-        <p className="font-display text-[11px] tracking-[0.2em] text-hi uppercase">
+      <div className="bg-blue/[0.04] px-5 py-8 lg:col-span-7 sm:px-8 lg:sticky lg:top-16 lg:self-start">
+        <p className="font-display text-[11px] tracking-[0.2em] text-blue uppercase">
           {course.duration}
         </p>
         <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
@@ -52,7 +52,7 @@ export default function CourseCatalog({ courses }: { courses: Course[] }) {
         {course.body.map((para) => (
           <p
             key={para.slice(0, 48)}
-            className="mt-4 text-[15px] leading-relaxed text-paper/75"
+            className="mt-4 text-[15px] leading-relaxed text-ink"
           >
             {para}
           </p>

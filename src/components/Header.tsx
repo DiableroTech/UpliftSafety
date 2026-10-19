@@ -1,12 +1,12 @@
 import { ArrowSquareOut, List, X } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import Logo from "./Logo";
 import NavDropdown, { linkClass, type DropLink } from "./NavDropdown";
 
 const links = [
   { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
+  { to: "/projects", label: "Projects" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -27,13 +27,16 @@ const trainingItems: DropLink[] = [
 
 function mobileLinkClass(isActive: boolean) {
   return `block py-3 font-display text-sm font-semibold tracking-[0.16em] uppercase ${
-    isActive ? "text-hi" : "text-paper/80"
+    isActive ? "text-blue" : "text-ink"
   }`;
 }
 
 export default function Header() {
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const [bar, setBar] = useState({ left: 0, width: 0, top: 0 });
+  const [slide, setSlide] = useState(false);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -54,32 +57,62 @@ export default function Header() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const measure = () => {
+      const active = nav.querySelector<HTMLElement>("[data-nav][aria-current='page']");
+      if (!active) {
+        setBar((prev) => (prev.width === 0 ? prev : { left: 0, width: 0, top: 0 }));
+        return;
+      }
+      const navBox = nav.getBoundingClientRect();
+      const box = active.getBoundingClientRect();
+      const left = box.left - navBox.left - nav.clientLeft;
+      const width = box.width;
+      const top = box.bottom - navBox.top - nav.clientTop + 2;
+      setBar((prev) =>
+        prev.left === left && prev.width === width && prev.top === top
+          ? prev
+          : { left, width, top },
+      );
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(nav);
+    const frame = requestAnimationFrame(() => setSlide(true));
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [pathname]);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-5">
-        <NavLink viewTransition to="/" className="shrink-0 text-paper">
-          <Logo />
+        <NavLink viewTransition to="/" className="shrink-0">
+          <img
+            src="/uplift-logo-grey.png"
+            alt="Uplift Safety"
+            className="h-8 w-auto"
+          />
         </NavLink>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          {links.slice(0, 2).map((link) => (
+        <nav ref={navRef} className="relative hidden items-center gap-8 lg:flex">
+          {links.slice(0, 3).map((link) => (
             <NavLink
               key={link.to}
               viewTransition
               to={link.to}
               end={link.end}
+              data-nav=""
               className={({ isActive }) =>
                 `${linkClass(isActive)} whitespace-nowrap`
               }
             >
-              {({ isActive }) => (
-                <>
-                  {link.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 h-px w-full bg-hi" />
-                  )}
-                </>
-              )}
+              {link.label}
             </NavLink>
           ))}
 
@@ -97,38 +130,41 @@ export default function Header() {
             items={trainingItems}
           />
 
-          {links.slice(2).map((link) => (
+          {links.slice(3).map((link) => (
             <NavLink
               key={link.to}
               viewTransition
               to={link.to}
+              data-nav=""
               className={({ isActive }) =>
                 `${linkClass(isActive)} whitespace-nowrap`
               }
             >
-              {({ isActive }) => (
-                <>
-                  {link.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 h-px w-full bg-hi" />
-                  )}
-                </>
-              )}
+              {link.label}
             </NavLink>
           ))}
+          <span
+            aria-hidden="true"
+            className={`pointer-events-none absolute h-0.5 bg-blue ${
+              slide
+                ? "transition-[left,width,top] duration-300 ease-out motion-reduce:transition-none"
+                : ""
+            }`}
+            style={{ left: bar.left, width: bar.width, top: bar.top }}
+          />
         </nav>
 
         <div className="flex items-center gap-3">
           <NavLink
             viewTransition
             to="/contact"
-            className="hidden bg-hi px-4 py-2 font-display text-[11px] font-bold tracking-[0.16em] text-hi-ink uppercase transition-transform duration-150 active:scale-[0.98] lg:inline-block"
+            className="hidden bg-blue px-4 py-2 font-display text-[11px] font-bold tracking-[0.16em] text-white uppercase transition-transform duration-150 active:scale-[0.98] lg:inline-block"
           >
             Talk to us
           </NavLink>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center text-paper lg:hidden"
+            className="flex h-10 w-10 items-center justify-center text-ink lg:hidden"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMenuOpen((v) => !v)}
@@ -143,8 +179,8 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="absolute inset-x-0 top-16 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-white/10 bg-ink px-5 py-6 lg:hidden">
-          {links.slice(0, 2).map((link) => (
+        <nav className="absolute inset-x-0 top-16 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-paper px-5 py-6 lg:hidden">
+          {links.slice(0, 3).map((link) => (
             <NavLink
               key={link.to}
               viewTransition
@@ -181,7 +217,7 @@ export default function Header() {
                 href={item.to}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 py-3 font-display text-sm font-semibold tracking-[0.16em] text-paper/80 uppercase"
+                className="flex items-center gap-2 py-3 font-display text-sm font-semibold tracking-[0.16em] text-ink uppercase"
               >
                 {item.label}
                 <ArrowSquareOut size={14} weight="bold" className="opacity-70" aria-hidden />
@@ -210,7 +246,7 @@ export default function Header() {
           <NavLink
             viewTransition
             to="/contact"
-            className="mt-6 inline-flex bg-hi px-5 py-3 font-display text-[11px] font-bold tracking-[0.16em] text-hi-ink uppercase"
+            className="mt-6 inline-flex bg-blue px-5 py-3 font-display text-[11px] font-bold tracking-[0.16em] text-white uppercase"
           >
             Talk to us
           </NavLink>

@@ -39,12 +39,12 @@ export default function Tabs({ items }: { items: TabItem[] }) {
               aria-selected={isOn}
               onClick={() => selectTab(i)}
               className={`relative px-3 py-2.5 font-display text-[10px] font-semibold tracking-[0.14em] uppercase transition-colors sm:px-5 sm:py-3 sm:text-[11px] sm:tracking-[0.16em] ${
-                isOn ? "text-hi" : "text-paper/55 hover:text-paper"
+                isOn ? "text-blue" : "text-mute hover:text-ink"
               }`}
             >
               {item.label}
               {isOn && (
-                <span className="absolute inset-x-4 -bottom-px h-0.5 bg-hi sm:inset-x-5" />
+                <span className="absolute inset-x-4 -bottom-px h-0.5 bg-blue sm:inset-x-5" />
               )}
             </button>
           );
@@ -53,7 +53,7 @@ export default function Tabs({ items }: { items: TabItem[] }) {
 
       <div
         role="tabpanel"
-        className="min-h-[20rem] border-x border-b border-line bg-ink-2 px-5 py-8 sm:px-8"
+        className="min-h-[20rem] border-x border-b border-line bg-blue/[0.04] px-5 py-8 sm:px-8"
       >
         {showPills && (
           <div className="mb-6 flex flex-wrap gap-2">
@@ -66,8 +66,8 @@ export default function Tabs({ items }: { items: TabItem[] }) {
                   onClick={() => setSub(i)}
                   className={`border px-3 py-1.5 font-display text-[10px] font-semibold tracking-[0.12em] uppercase ${
                     on
-                      ? "border-hi text-hi"
-                      : "border-line text-paper/70 hover:border-hi hover:text-hi"
+                      ? "border-blue text-blue"
+                      : "border-line text-mute hover:border-blue hover:text-blue"
                   }`}
                 >
                   {s.heading}
@@ -82,7 +82,7 @@ export default function Tabs({ items }: { items: TabItem[] }) {
         {section.body.map((para) => (
           <p
             key={para.slice(0, 48)}
-            className="mt-4 max-w-3xl text-[15px] leading-relaxed text-paper/75"
+            className="mt-4 max-w-3xl text-[15px] leading-relaxed text-ink"
           >
             {para}
           </p>

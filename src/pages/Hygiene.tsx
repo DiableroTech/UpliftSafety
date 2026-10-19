@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+import Accordion from "../components/Accordion";
 import PageHero from "../components/PageHero";
-import Tabs from "../components/Tabs";
 
 const hygiene = [
   {
-    label: "Exposure control",
+    title: "Exposure control",
+    summary: "Exposure Control Plans · Occupational Hygiene Monitoring",
     sections: [
       {
         heading: "Exposure Control Plans",
@@ -20,7 +22,8 @@ const hygiene = [
     ],
   },
   {
-    label: "Air & climate",
+    title: "Air & climate",
+    summary: "Heat and Cold Stress · Indoor Air Quality and Mould · Ventilation",
     sections: [
       {
         heading: "Heat and Cold Stress",
@@ -43,7 +46,8 @@ const hygiene = [
     ],
   },
   {
-    label: "Body & hearing",
+    title: "Body & hearing",
+    summary: "Ergonomic Assessments · Noise Assessments",
     sections: [
       {
         heading: "Ergonomic Assessments",
@@ -60,7 +64,8 @@ const hygiene = [
     ],
   },
   {
-    label: "Respiratory",
+    title: "Respiratory",
+    summary: "Fit Testing · Welding Fumes",
     sections: [
       {
         heading: "Fit Testing",
@@ -77,7 +82,8 @@ const hygiene = [
     ],
   },
   {
-    label: "Hazardous materials",
+    title: "Hazardous materials",
+    summary: "Asbestos · Silica · Lead · Formaldehyde · Isocyanates · VOCs · Infectious diseases",
     sections: [
       {
         heading: "Asbestos",
@@ -131,13 +137,20 @@ export default function Hygiene() {
       <PageHero
         title="Hygiene Services"
         image="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=80"
+        scrim="from-blue/70 via-blue/35 to-transparent"
       >
         Exposure control, air sampling, and assessments. Delivered by a
         Certified Industrial Hygienist.
       </PageHero>
 
-      <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
-        <Tabs items={hygiene} />
+      <section className="mx-auto max-w-6xl px-5 py-10 sm:px-0 sm:py-14">
+        <Accordion items={hygiene} />
+        <p className="mt-10 px-5 text-sm text-mute sm:px-8">
+          Need safety services instead?{" "}
+          <Link viewTransition to="/services" className="text-blue hover:underline">
+            Safety services
+          </Link>
+        </p>
       </section>
     </>
   );
