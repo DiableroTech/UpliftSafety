@@ -63,7 +63,7 @@ export default function Home() {
 
       <ProjectsCtaSection />
 
-      {import.meta.env.DEV ? <TestimonialSection /> : null}
+      <TestimonialSection />
 
       <section
         ref={asbestosTarget}
