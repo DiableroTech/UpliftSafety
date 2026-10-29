@@ -4,4 +4,3 @@ List of what we need for UpliftSafety
 
  - Testimonials/Reviews. Do you want a testimonial or review section? If you do then I will need content for the testimonials including Name/Company, Date, Written Testimonial. 
 
- 

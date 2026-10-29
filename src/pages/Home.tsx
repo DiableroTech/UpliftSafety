@@ -1,32 +1,16 @@
 import { Link } from 'react-router-dom'
+import HomeEditorialShowcases from '../components/HomeEditorialShowcases'
+import ProjectsCtaSection from '../components/ProjectsCtaSection'
+import TestimonialSection from '../components/TestimonialSection'
+import TypewriterText from '../components/TypewriterText'
+import { useReveal } from '../hooks/useReveal'
 
 const heroImg = '/rewebsitekickoff/image-asset.jpeg'
 const weldImg =
   'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80'
 
-const lanes = [
-  {
-    n: '01',
-    title: 'Industrial hygiene',
-    body: 'Exposure control, air quality, welding fume, ergonomics, hazardous materials.',
-    to: '/services/hygiene',
-  },
-  {
-    n: '02',
-    title: 'Safety programs',
-    body: 'Procedures, confined space, lockout, COR / OSSE audits, contract advisors.',
-    to: '/services',
-  },
-  {
-    n: '03',
-    title: 'Training',
-    body: 'Leadership, equipment, online awareness. Built to WorkSafeBC and the shop floor.',
-    to: '/training',
-  },
-]
-
 export default function Home() {
-  const [lead, ...rest] = lanes
+  const { revealTarget: asbestosTarget, shown: asbestosShown } = useReveal<HTMLElement>()
 
   return (
     <>
@@ -44,8 +28,9 @@ export default function Home() {
           <h1 className="enter-slide seq1 mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:mt-5 sm:text-5xl lg:text-7xl">
             Elevate to Excellence
           </h1>
-          <p className="enter-fade seq2 mt-4 max-w-[65ch] text-lg leading-relaxed text-white/80 sm:mt-5 sm:text-xl">
-            Helping organizations achieve safety excellence.
+          <p className="hero-lead enter-fade seq2 mt-4 max-w-[65ch] text-lg leading-relaxed text-white sm:mt-5 sm:text-xl">
+            Uplift Safety is one of the most well-respected and recognized Safety Consultant
+            practices in Western Canada serving virtually every industry from BC to Manitoba.
           </p>
           <div className="enter-fade seq3 mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
             <Link
@@ -66,44 +51,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-line">
-        <div className="mx-auto grid max-w-6xl lg:grid-cols-12">
-          <Link
-            viewTransition
-            to={lead.to}
-            className="group border-b border-line px-5 py-14 lg:col-span-7 lg:border-r lg:border-b-0 lg:px-8 lg:py-16"
-          >
-            <p className="font-display text-[11px] tracking-[0.2em] text-blue">{lead.n}</p>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              {lead.title}
-            </h2>
-            <p className="mt-4 max-w-[46ch] text-lg leading-relaxed text-mute">{lead.body}</p>
-            <p className="mt-8 font-display text-[11px] tracking-[0.16em] text-blue uppercase group-hover:underline">
-              Explore
-            </p>
-          </Link>
-          <div className="flex flex-col lg:col-span-5">
-            {rest.map((lane, i) => (
-              <Link
-                key={lane.n}
-                viewTransition
-                to={lane.to}
-                className={`group flex flex-1 flex-col justify-center px-5 py-10 transition-colors hover:bg-blue/5 ${
-                  i === 0 ? 'border-b border-line' : ''
-                }`}
-              >
-                <p className="font-display text-[11px] tracking-[0.2em] text-blue">{lane.n}</p>
-                <h2 className="mt-3 font-display text-xl font-bold tracking-tight sm:text-2xl">
-                  {lane.title}
-                </h2>
-                <p className="mt-3 max-w-[42ch] text-base leading-relaxed text-mute">{lane.body}</p>
-              </Link>
-            ))}
-          </div>
+      <section aria-label="Service area" className="bg-blue">
+        <div className="service-area-strip-inner mx-auto w-full max-w-7xl">
+          <p className="service-area-banner">
+            <TypewriterText text="No matter what the challenge, we develop solutions that help organizations meet regulatory requirements, protect workers and mitigate loss." />
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-stretch px-5 py-12 sm:py-20 lg:grid-cols-12 lg:px-0">
+      <HomeEditorialShowcases />
+
+      <ProjectsCtaSection />
+
+      {import.meta.env.DEV ? <TestimonialSection /> : null}
+
+      <section
+        ref={asbestosTarget}
+        className={`reveal-fade mx-auto grid max-w-6xl items-stretch px-5 py-12 sm:py-20 lg:grid-cols-12 lg:px-0 ${
+          asbestosShown ? 'is-shown' : ''
+        }`}
+      >
         <div className="relative min-h-52 overflow-hidden sm:min-h-72 lg:col-span-5">
           <img
             src={weldImg}
@@ -128,13 +95,6 @@ export default function Home() {
             Book group training
           </Link>
         </div>
-      </section>
-
-      <section className="border-t border-line px-5 py-16">
-        <p className="mx-auto max-w-6xl font-display text-xl font-semibold tracking-tight sm:text-3xl">
-          Kamloops, Kelowna, Vernon, Prince George, Edmonton, Calgary, and the rest of Western
-          Canada.
-        </p>
       </section>
     </>
   )

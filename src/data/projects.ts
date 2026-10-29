@@ -146,3 +146,31 @@ export const projects: Project[] = [
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug)
 }
+
+/** Slugs in display order. Exactly five for the home grid. */
+export const homeFeaturedProjectSlugs = [
+  'sample-open-pit',
+  'sample-mill-lockout',
+  'sample-forest-mill',
+  'sample-plant-sampling',
+  'sample-crew-training',
+] as const
+
+if (import.meta.env.DEV && homeFeaturedProjectSlugs.length !== 5) {
+  console.warn('[projects] homeFeaturedProjectSlugs must contain exactly five slugs')
+}
+
+export function getHomeFeaturedProjects(): Project[] {
+  const featured: Project[] = []
+  for (const slug of homeFeaturedProjectSlugs) {
+    const project = getProject(slug)
+    if (!project) {
+      if (import.meta.env.DEV) {
+        console.warn(`[projects] home featured slug not found: ${slug}`)
+      }
+      continue
+    }
+    featured.push(project)
+  }
+  return featured
+}

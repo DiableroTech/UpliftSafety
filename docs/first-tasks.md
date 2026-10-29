@@ -341,4 +341,5 @@ When one of these grows, split it out instead of extending this file forever.
 
 - Projects content sheet: one row per job, fields matching the type above.
 - SEO title and description table, one row per route.
-- Chat bubble notes, if they later want Marsha on the same button or a different number.
+- **`docs/sms-feature.md`** — SMS / chat bubble options (client `sms:` vs Twilio), phased code plan, open questions for Jason.
+- Chat bubble notes, if they later want Marsha on the same button or a different number (see sms-feature.md).
