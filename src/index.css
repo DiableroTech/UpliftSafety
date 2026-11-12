@@ -1,7 +1,19 @@
-@import "@fontsource/archivo/500.css";
-@import "@fontsource/archivo/600.css";
-@import "@fontsource/archivo/700.css";
-@import "@fontsource/archivo/800.css";
+@font-face {
+  font-family: "Tenorite";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/tenorite/tenorite-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Tenorite";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/tenorite/tenorite-bold.woff") format("woff");
+}
+
 @import "@fontsource/source-sans-3/400.css";
 @import "@fontsource/source-sans-3/500.css";
 @import "@fontsource/source-sans-3/600.css";
@@ -9,7 +21,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Tenorite", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --color-paper: #eff0ef;
   --color-blue: #175873;
@@ -36,6 +48,10 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+}
+
+.font-display {
+  font-style: normal;
 }
 
 :focus-visible {
@@ -272,6 +288,53 @@ main {
   animation-delay: 1.2s;
 }
 
+.testimonial-header-top,
+.testimonial-intro {
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition:
+    opacity 0.62s ease,
+    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonial-carousel {
+  opacity: 0;
+  transform: translateY(-2rem);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonial-section.is-shown .testimonial-header-top,
+.testimonial-section.is-shown .testimonial-intro,
+.testimonial-section.is-shown .testimonial-carousel {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.testimonial-section.is-shown .testimonial-header-top {
+  transition-delay: 0.05s;
+}
+
+.testimonial-section.is-shown .testimonial-intro {
+  transition-delay: 0.38s;
+}
+
+.testimonial-section.is-shown .testimonial-carousel {
+  transition-delay: 0.58s;
+}
+
+.testimonial-section {
+  background: linear-gradient(
+    to bottom,
+    var(--color-blue) 0%,
+    var(--color-blue) 18%,
+    color-mix(in srgb, var(--color-blue) 84%, white) 40%,
+    var(--color-blue) 72%,
+    var(--color-blue) 100%
+  );
+}
+
 .testimonial-viewport {
   position: relative;
   width: 100%;
@@ -281,20 +344,6 @@ main {
   cursor: grab;
   touch-action: pan-y;
   isolation: isolate;
-}
-
-.testimonial-viewport::before {
-  content: '';
-  position: absolute;
-  inset: -8% 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse min(34rem, 88vw) 120% at 50% 50%,
-    rgb(255 255 255 / 0.24) 0%,
-    rgb(255 255 255 / 0.11) 40%,
-    transparent 68%
-  );
 }
 
 .testimonial-viewport.is-dragging {
@@ -489,6 +538,57 @@ main {
   outline-offset: 2px;
 }
 
+.project-cta-heading {
+  opacity: 0;
+  transform: translateY(-2rem);
+  transition:
+    opacity 0.62s ease,
+    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-cta-intro {
+  opacity: 0;
+  transform: translateY(-1.5rem);
+  transition:
+    opacity 0.62s ease,
+    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-cta-cell {
+  opacity: 0;
+  transform: translateY(-0.85rem);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-cta-section.is-shown .project-cta-heading,
+.project-cta-section.is-shown .project-cta-intro,
+.project-cta-section.is-shown .project-cta-cell {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-cta-section.is-shown .project-cta-heading,
+.client-logo-section.is-shown .project-cta-heading {
+  transition-delay: 0.05s;
+}
+
+.project-cta-section.is-shown .project-cta-intro,
+.client-logo-section.is-shown .project-cta-intro {
+  transition-delay: 0.4s;
+}
+
+.client-logo-section.is-shown .project-cta-heading,
+.client-logo-section.is-shown .project-cta-intro {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-cta-section.is-shown .project-cta-cell {
+  transition-delay: calc(0.65s + var(--project-cta-index, 0) * 0.14s);
+}
+
 .project-cta-more {
   border: 1px solid var(--color-line);
   transition:
@@ -527,6 +627,8 @@ main {
   .reveal-fade.is-shown {
     animation: none;
     opacity: 1;
+    transform: none;
+    will-change: auto;
   }
 
   .editorial-media {
@@ -544,6 +646,22 @@ main {
   .editorial-intro,
   .editorial-link,
   .editorial-cta {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .project-cta-heading,
+  .project-cta-intro,
+  .project-cta-cell {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .testimonial-header-top,
+  .testimonial-intro,
+  .testimonial-carousel {
     opacity: 1;
     transform: none;
     transition: none;

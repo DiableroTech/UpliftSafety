@@ -136,7 +136,9 @@ export default function Hygiene() {
     <>
       <PageHero
         title="Hygiene Services"
-        image="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=80"
+        image="/training/industrial-hygenie-homepage-2.jpg"
+        imagePosition="center 40%"
+        roomy
         scrim="from-blue/70 via-blue/35 to-transparent"
       >
         Exposure control, air sampling, and assessments. Delivered by a

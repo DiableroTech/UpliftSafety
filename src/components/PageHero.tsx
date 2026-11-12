@@ -5,6 +5,9 @@ export default function PageHero({
   kicker,
   title,
   image,
+  imagePosition = "center",
+  roomy = false,
+  crop = "cover",
   backHref,
   scrim = "from-blue via-blue/80 to-blue/30",
   children,
@@ -12,18 +15,41 @@ export default function PageHero({
   kicker?: string;
   title: string;
   image: string;
+  imagePosition?: string;
+  roomy?: boolean;
+  crop?: "cover" | "half";
   backHref?: string;
   scrim?: string;
   children: string;
 }) {
+  const height =
+    crop === "half"
+      ? "h-[36svh] sm:h-[46svh]"
+      : roomy
+        ? "min-h-[36svh] sm:min-h-[46svh]"
+        : "min-h-[32svh] sm:min-h-[40svh]";
+
   return (
-    <section className="relative isolate min-h-[32svh] overflow-hidden sm:min-h-[40svh]">
-      <img
-        src={image}
-        alt=""
-        className="hero-reveal absolute inset-0 h-full w-full object-cover"
-      />
-      <div className={`absolute inset-0 bg-gradient-to-r ${scrim}`} />
+    <section className={`relative isolate overflow-hidden ${crop === "half" ? "bg-blue" : ""} ${height}`}>
+      {crop === "half" ? (
+        <img
+          src={image}
+          alt=""
+          className="absolute top-[-50%] right-0 h-[200%] w-auto max-w-none"
+        />
+      ) : (
+        <img
+          src={image}
+          alt=""
+          style={{ objectPosition: imagePosition }}
+          className="hero-reveal absolute inset-0 h-full w-full object-cover"
+        />
+      )}
+      {crop === "half" ? (
+        <div className="absolute inset-y-0 left-0 w-3/5 bg-gradient-to-r from-blue via-blue/75 to-transparent" />
+      ) : (
+        <div className={`absolute inset-0 bg-gradient-to-r ${scrim}`} />
+      )}
       {backHref ? (
         <Link
           viewTransition
@@ -34,7 +60,7 @@ export default function PageHero({
           <ArrowLeft size={22} weight="bold" aria-hidden />
         </Link>
       ) : null}
-      <div className={`relative mx-auto flex min-h-[32svh] max-w-6xl flex-col justify-end px-5 pb-10 text-white sm:min-h-[40svh] sm:pb-12 ${backHref ? "pt-20 xl:pt-16" : "pt-12 sm:pt-16"}`}>
+      <div className={`relative mx-auto flex max-w-6xl flex-col justify-end px-5 pb-10 text-white sm:pb-12 ${height} ${backHref ? "pt-20 xl:pt-16" : "pt-12 sm:pt-16"}`}>
         {kicker ? (
           <p className="enter-slide font-display text-[11px] font-semibold tracking-[0.24em] text-accent uppercase">
             {kicker}

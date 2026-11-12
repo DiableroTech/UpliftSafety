@@ -1,5 +1,7 @@
+import { type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { getHomeFeaturedProjects, type Project } from '../data/projects'
+import { useReveal } from '../hooks/useReveal'
 
 function ProjectTile({ project }: { project: Project }) {
   return (
@@ -45,28 +47,45 @@ function ShowMoreTile() {
 
 export default function ProjectsCtaSection() {
   const featured = getHomeFeaturedProjects()
+  const { revealTarget, shown } = useReveal<HTMLElement>(0.85)
 
   return (
-    <section className="border-t border-line bg-paper py-12 sm:py-16" aria-labelledby="home-projects-heading">
+    <section
+      className={`project-cta-section border-t border-line bg-paper py-12 sm:py-16 ${
+        shown ? 'is-shown' : ''
+      }`}
+      aria-labelledby="home-projects-heading"
+    >
       <div className="mx-auto max-w-6xl px-5">
-        <header className="max-w-[65ch]">
+        <header ref={revealTarget} className="max-w-[65ch]">
           <h2
             id="home-projects-heading"
-            className="font-display text-2xl font-bold tracking-tight sm:text-4xl"
+            className="project-cta-heading font-display text-2xl font-bold tracking-tight sm:text-4xl"
           >
             Projects
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-mute">
+          <p className="project-cta-intro mt-4 text-lg leading-relaxed text-mute">
             Past work in mining and industrial settings across Western Canada. Open a tile for the
             full write-up, or see everything on the projects page.
           </p>
         </header>
 
-        <div className="project-cta-grid mt-8 grid grid-cols-1 gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
-          {featured.map((project) => (
-            <ProjectTile key={project.slug} project={project} />
+        <div className="project-cta-grid mt-8 grid grid-cols-1 gap-px bg-paper md:grid-cols-2 lg:grid-cols-3">
+          {featured.map((project, index) => (
+            <div
+              key={project.slug}
+              className="project-cta-cell bg-paper"
+              style={{ '--project-cta-index': index } as CSSProperties}
+            >
+              <ProjectTile project={project} />
+            </div>
           ))}
-          <ShowMoreTile />
+          <div
+            className="project-cta-cell bg-paper"
+            style={{ '--project-cta-index': featured.length } as CSSProperties}
+          >
+            <ShowMoreTile />
+          </div>
         </div>
       </div>
     </section>

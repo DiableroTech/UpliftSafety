@@ -1,6 +1,7 @@
 import { Star } from '@phosphor-icons/react'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { getTestimonialSummary, testimonials, type Testimonial } from '../data/testimonials'
+import { useReveal } from '../hooks/useReveal'
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(
@@ -246,6 +247,7 @@ function wrap(value: number, size: number) {
 export default function TestimonialSection() {
   const summary = getTestimonialSummary(testimonials)
   const reduced = usePrefersReducedMotion()
+  const { revealTarget, shown } = useReveal<HTMLElement>(0.85)
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const offsetRef = useRef(0)
@@ -400,34 +402,42 @@ export default function TestimonialSection() {
   }
 
   return (
-    <section aria-labelledby="home-testimonials-title" className="overflow-hidden bg-blue py-11 sm:py-14">
+    <section
+      aria-labelledby="home-testimonials-title"
+      className={`testimonial-section overflow-hidden py-11 sm:py-14${shown ? ' is-shown' : ''}`}
+    >
       <div className="mx-auto max-w-6xl px-5">
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-          <h2
-            id="home-testimonials-title"
-            className="min-w-0 font-display text-2xl font-extrabold tracking-tight text-balance text-white sm:text-4xl"
-          >
-            What they say about us
-          </h2>
-          <div className="flex shrink-0 flex-col items-end">
-            <div className="flex items-center gap-2.5">
-              <p className="font-display text-3xl leading-none font-extrabold text-white sm:text-4xl">
-                <span aria-hidden="true">{summary.average.toFixed(1)}</span>
-                <span className="sr-only">Rated {summary.average.toFixed(1)} out of 5</span>
+        <header ref={revealTarget}>
+          <div className="testimonial-header-top flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+            <h2
+              id="home-testimonials-title"
+              className="min-w-0 font-display text-2xl font-extrabold tracking-tight text-balance text-white sm:text-4xl"
+            >
+              What they say about us
+            </h2>
+            <div className="flex shrink-0 flex-col items-end">
+              <div className="flex items-center gap-2.5">
+                <p className="font-display text-3xl leading-none font-extrabold text-white sm:text-4xl">
+                  <span aria-hidden="true">{summary.average.toFixed(1)}</span>
+                  <span className="sr-only">Rated {summary.average.toFixed(1)} out of 5</span>
+                </p>
+                <Stars rating={summary.average} tone="summary" />
+              </div>
+              <p className="mt-1 text-sm text-white/75">
+                {summary.count} {countLabel}
               </p>
-              <Stars rating={summary.average} tone="summary" />
             </div>
-            <p className="mt-1 text-sm text-white/75">
-              {summary.count} {countLabel}
-            </p>
           </div>
-        </div>
-        <p className="mx-auto mt-3 max-w-[40rem] text-center text-base leading-relaxed text-balance text-white/80 sm:mx-0 sm:max-w-none sm:text-left sm:text-lg">
-          After working with clients across British Columbia, we heard back about the work. Here is
-          what they say about the team.
-        </p>
+          <p className="testimonial-intro mx-auto mt-3 max-w-[40rem] text-center text-base leading-relaxed text-balance text-white/80 sm:mx-0 sm:max-w-none sm:text-left sm:text-lg">
+            After working with clients across British Columbia, we heard back about the work. Here is
+            what they say about the team.
+          </p>
+        </header>
       </div>
-      <div ref={viewportRef} className="testimonial-viewport mt-5 sm:mt-6">
+      <div
+        ref={viewportRef}
+        className="testimonial-viewport testimonial-carousel mt-5 sm:mt-6"
+      >
         <div ref={trackRef} className="testimonial-track">
           <CardSet items={testimonials} expandedId={expandedId} onToggle={toggleQuote} />
           {loop ? (

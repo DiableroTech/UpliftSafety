@@ -10,7 +10,7 @@ export type DropLink = {
 };
 
 function linkClass(isActive: boolean) {
-  return `relative font-display text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors ${
+  return `relative font-display text-[13px] font-semibold tracking-[0.15em] uppercase transition-colors ${
     isActive ? "text-blue" : "text-ink/80 hover:text-blue"
   }`;
 }
@@ -69,7 +69,7 @@ export default function NavDropdown({
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2 px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] text-ink/80 uppercase hover:bg-blue/5 hover:text-blue"
+              className="flex items-center gap-2 px-4 py-3 font-display text-[12px] font-semibold tracking-[0.14em] text-ink/80 uppercase hover:bg-blue/5 hover:text-blue"
             >
               {item.label}
               <ArrowSquareOut
@@ -88,7 +88,7 @@ export default function NavDropdown({
               end={item.end}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `block px-4 py-3 font-display text-[11px] font-semibold tracking-[0.16em] uppercase ${
+                `block px-4 py-3 font-display text-[12px] font-semibold tracking-[0.14em] uppercase ${
                   isActive
                     ? "bg-blue text-white"
                     : "text-ink/80 hover:bg-blue/5 hover:text-blue"

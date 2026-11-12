@@ -26,7 +26,7 @@ const trainingItems: DropLink[] = [
 ];
 
 function mobileLinkClass(isActive: boolean) {
-  return `block py-3 font-display text-sm font-semibold tracking-[0.16em] uppercase ${
+  return `block py-3 font-display text-[13px] font-semibold tracking-[0.15em] uppercase ${
     isActive ? "text-blue" : "text-ink"
   }`;
 }
@@ -37,6 +37,14 @@ export default function Header() {
   const navRef = useRef<HTMLElement>(null);
   const [bar, setBar] = useState({ left: 0, width: 0, top: 0 });
   const [slide, setSlide] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -91,12 +99,18 @@ export default function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-5">
+      <div
+        className={`mx-auto flex max-w-6xl items-center justify-between px-4 transition-[height] duration-300 ease-out motion-reduce:transition-none sm:px-5 ${
+          scrolled ? "h-12" : "h-16"
+        }`}
+      >
         <NavLink viewTransition to="/" className="shrink-0">
           <img
             src="/uplift-logo-grey.png"
             alt="Uplift Safety"
-            className="h-8 w-auto"
+            className={`w-auto transition-[height] duration-300 ease-out motion-reduce:transition-none ${
+              scrolled ? "h-6" : "h-8"
+            }`}
           />
         </NavLink>
 
@@ -126,7 +140,7 @@ export default function Header() {
           <NavDropdown
             label="Training"
             to="/training"
-            active={pathname.startsWith("/training")}
+            active={pathname === "/training" || pathname.startsWith("/training/")}
             items={trainingItems}
           />
 
@@ -155,13 +169,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <NavLink
-            viewTransition
-            to="/contact"
-            className="hidden bg-blue px-4 py-2 font-display text-[11px] font-bold tracking-[0.16em] text-white uppercase transition-transform duration-150 active:scale-[0.98] lg:inline-block"
-          >
-            Talk to us
-          </NavLink>
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center text-ink lg:hidden"
@@ -179,7 +186,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="absolute inset-x-0 top-16 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-paper px-5 py-6 lg:hidden">
+        <nav className="absolute inset-x-0 top-full max-h-[calc(100dvh-3rem)] overflow-y-auto border-b border-line bg-paper px-5 py-6 lg:hidden">
           {links.slice(0, 3).map((link) => (
             <NavLink
               key={link.to}
@@ -217,7 +224,7 @@ export default function Header() {
                 href={item.to}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 py-3 font-display text-sm font-semibold tracking-[0.16em] text-ink uppercase"
+                className="flex items-center gap-2 py-3 font-display text-[13px] font-semibold tracking-[0.15em] text-ink uppercase"
               >
                 {item.label}
                 <ArrowSquareOut size={14} weight="bold" className="opacity-70" aria-hidden />
@@ -241,14 +248,6 @@ export default function Header() {
             className={({ isActive }) => mobileLinkClass(isActive)}
           >
             Contact
-          </NavLink>
-
-          <NavLink
-            viewTransition
-            to="/contact"
-            className="mt-6 inline-flex bg-blue px-5 py-3 font-display text-[11px] font-bold tracking-[0.16em] text-white uppercase"
-          >
-            Talk to us
           </NavLink>
         </nav>
       )}

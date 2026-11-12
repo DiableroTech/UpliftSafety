@@ -1,16 +1,17 @@
-import { Link } from 'react-router-dom'
-import HomeEditorialShowcases from '../components/HomeEditorialShowcases'
-import ProjectsCtaSection from '../components/ProjectsCtaSection'
-import TestimonialSection from '../components/TestimonialSection'
-import TypewriterText from '../components/TypewriterText'
-import { useReveal } from '../hooks/useReveal'
+import { Link } from "react-router-dom";
+import ClientLogoBanner from "../components/ClientLogoBanner";
+import HomeEditorialShowcases from "../components/HomeEditorialShowcases";
+import ProjectsCtaSection from "../components/ProjectsCtaSection";
+import TestimonialSection from "../components/TestimonialSection";
+import TypewriterText from "../components/TypewriterText";
+import { useReveal } from "../hooks/useReveal";
 
-const heroImg = '/rewebsitekickoff/image-asset.jpeg'
-const weldImg =
-  'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80'
+const heroImg = "/rewebsitekickoff/image-asset.jpeg";
+const asbestosImg = "/training/asbestos-training-homepage.jpg";
 
 export default function Home() {
-  const { revealTarget: asbestosTarget, shown: asbestosShown } = useReveal<HTMLElement>()
+  const { revealTarget: asbestosTarget, shown: asbestosShown } =
+    useReveal<HTMLElement>();
 
   return (
     <>
@@ -22,15 +23,21 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue/70 via-blue/35 to-transparent" />
         <div className="relative mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl flex-col justify-center px-5 py-16 text-white">
-          <p className="enter-slide font-display text-[11px] font-semibold tracking-[0.28em] text-accent uppercase">
-            Kamloops · Western Canada
+          <p className="enter-slide font-display text-[12px] font-semibold tracking-[0.28em] text-accent uppercase">
+            Based in Kamloops - Proudly serving Western Canada
           </p>
           <h1 className="enter-slide seq1 mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:mt-5 sm:text-5xl lg:text-7xl">
-            Elevate to Excellence
+            Expert Advice <br /> Practical Solutions <br /> People First
           </h1>
           <p className="hero-lead enter-fade seq2 mt-4 max-w-[65ch] text-lg leading-relaxed text-white sm:mt-5 sm:text-xl">
-            Uplift Safety is one of the most well-respected and recognized Safety Consultant
-            practices in Western Canada serving virtually every industry from BC to Manitoba.
+            At Uplift Safety, we bring together qualified professionals,
+            extensive field experience, and a genuine commitment to our clients.
+            We understand the complexities of industrial operations because
+            we've worked in them. When you partner with Uplift Safety, you work
+            directly with us-the professionals behind the company. We pride
+            ourselves on being accessible, responsive, and personally invested
+            in delivering practical and effective solutions to even the most
+            challenging workplace health and safety issues.
           </p>
           <div className="enter-fade seq3 mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
             <Link
@@ -68,24 +75,24 @@ export default function Home() {
       <section
         ref={asbestosTarget}
         className={`reveal-fade mx-auto grid max-w-6xl items-stretch px-5 py-12 sm:py-20 lg:grid-cols-12 lg:px-0 ${
-          asbestosShown ? 'is-shown' : ''
+          asbestosShown ? "is-shown" : ""
         }`}
       >
-        <div className="relative min-h-52 overflow-hidden sm:min-h-72 lg:col-span-5">
+        <div className="relative min-h-64 overflow-hidden sm:min-h-80 lg:col-span-5">
           <img
-            src={weldImg}
+            src={asbestosImg}
             alt=""
-            className="hero-media absolute inset-0 h-full w-full object-cover"
+            className="hero-media absolute inset-0 h-full w-full object-cover object-center"
           />
         </div>
         <div className="flex flex-col justify-center border border-line border-t-0 p-6 sm:p-8 lg:col-span-7 lg:border-t lg:border-l-0 lg:p-14">
           <h2 className="font-display text-2xl font-bold tracking-tight sm:text-4xl">
-            Asbestos certification for B.C.
+            WorkSafeBC Asbestos Training
           </h2>
           <p className="mt-5 max-w-[65ch] text-lg leading-relaxed text-mute">
-            Asbestos is still the number-one killer of workers in this province. Anyone doing
-            abatement work needs training. We run WorkSafeBC Level 1, 2, and 3, including group
-            sessions.
+            Asbestos exposure remains the number one killer of workers. All
+            workers performing asbestos work in BC require WorkSafeBC certified
+            training. We offer Level 1, 2 and 3 certification courses.
           </p>
           <Link
             viewTransition
@@ -96,6 +103,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <ClientLogoBanner />
     </>
-  )
+  );
 }

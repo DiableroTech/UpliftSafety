@@ -50,7 +50,9 @@ export default function Equipment() {
     <>
       <PageHero
         title="Mobile Equipment Training"
-        image="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=80"
+        image="/training/equipment-training-homepage.png"
+        imagePosition="center 45%"
+        roomy
         scrim="from-blue/70 via-blue/35 to-transparent"
       >
         Forklift, boom lift, telehandler, scissor lift, and propane training

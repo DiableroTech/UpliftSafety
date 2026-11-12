@@ -106,11 +106,10 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
-        <p className="max-w-[65ch] text-[15px] leading-relaxed text-mute">
-          Uplift Safety is a partnership dedicated to providing the highest
-          level of expertise in occupational health and safety. Based in
-          Kamloops, BC, we serve virtually every industry from British
-          Columbia to Manitoba.
+        <p className="max-w-[65ch] text-lg leading-relaxed text-mute sm:text-xl">
+          Uplift Safety is a partnership dedicated to providing the highest level
+          of expertise in occupational health and safety. Based in Kamloops, BC, we
+          serve virtually every industry from British Columbia to Manitoba.
         </p>
       </section>
 

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 
-export function useReveal<T extends HTMLElement>(threshold = 0.18) {
+export function useReveal<T extends HTMLElement>(
+  threshold = 0.18,
+  rootMargin = '0px',
+) {
   const [node, setNode] = useState<T | null>(null)
   const [shown, setShown] = useState(
     () =>
@@ -17,12 +20,12 @@ export function useReveal<T extends HTMLElement>(threshold = 0.18) {
         setShown(true)
         observer.disconnect()
       },
-      { threshold },
+      { threshold, rootMargin },
     )
 
     observer.observe(node)
     return () => observer.disconnect()
-  }, [node, shown, threshold])
+  }, [node, shown, threshold, rootMargin])
 
   return { revealTarget: setNode, shown }
 }

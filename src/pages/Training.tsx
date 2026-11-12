@@ -82,7 +82,9 @@ export default function Training() {
     <>
       <PageHero
         title="Safety Training"
-        image="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2000&q=80"
+        image="/training/safety-training-homepage-2.png"
+        roomy
+        crop="half"
         scrim="from-blue/70 via-blue/35 to-transparent"
       >
         WorkSafeBC-recognized courses for leadership, confined space, fall
