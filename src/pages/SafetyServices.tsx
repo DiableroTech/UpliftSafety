@@ -327,13 +327,18 @@ function CategoryFeatured({
   return (
     <section className="grid lg:grid-cols-2">
       <div
-        className="relative isolate min-h-[32rem] bg-cover bg-center sm:min-h-[36rem]"
+        className="relative isolate bg-cover bg-center lg:min-h-[36rem]"
         style={{ backgroundImage: `url(${image})` }}
       >
-        <Reveal delay={0} className="absolute inset-0 -z-10" innerClassName="h-full w-full bg-black/50">
+        <Reveal
+          from="fade"
+          delay={0}
+          className="absolute inset-0 -z-10"
+          innerClassName="h-full w-full bg-black/50"
+        >
           {null}
         </Reveal>
-        <div className="relative flex min-h-[32rem] flex-col px-6 py-12 sm:min-h-[36rem] sm:px-10 sm:py-16 lg:px-14">
+        <div className="relative flex flex-col px-5 py-10 sm:px-10 sm:py-14 lg:min-h-[36rem] lg:px-14">
           <Reveal delay={300}>
             <p
               className={`font-display text-[11px] font-semibold tracking-[0.24em] text-accent uppercase ${textOnPhoto}`}
@@ -341,14 +346,14 @@ function CategoryFeatured({
               {String(index + 1).padStart(2, "0")}
             </p>
             <h2
-              className={`mt-3 mb-10 max-w-md font-display text-4xl font-extrabold tracking-tight text-white uppercase sm:mb-12 sm:text-5xl lg:mb-14 ${textOnPhoto}`}
+              className={`mt-3 mb-8 max-w-md font-display text-3xl font-extrabold tracking-tight text-white uppercase sm:text-4xl lg:mb-14 lg:text-5xl ${textOnPhoto}`}
             >
               {service.title}
             </h2>
           </Reveal>
           <Reveal
             delay={500}
-            className="relative mt-auto max-w-md overflow-hidden border border-white p-6 sm:p-8"
+            className="relative mt-0 w-full max-w-xl overflow-hidden border border-white p-5 sm:p-8 lg:mt-auto lg:max-w-md"
           >
             <div className="absolute inset-0 bg-black/55" aria-hidden />
             <div className="relative z-10">
@@ -382,7 +387,7 @@ function CategoryFeatured({
         </div>
       </div>
 
-      <div className="bg-[repeating-linear-gradient(180deg,#f4f4f3_0,#f4f4f3_5rem,#ecebea_5rem,#ecebea_10rem)] px-6 py-12 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
+      <div className="bg-[repeating-linear-gradient(180deg,#f4f4f3_0,#f4f4f3_5rem,#ecebea_5rem,#ecebea_10rem)] px-5 py-10 sm:px-10 sm:py-14 lg:px-14 lg:py-20">
         <Reveal delay={300}>
           <h3 className="font-display text-lg font-bold tracking-tight text-blue">{culture.heading}</h3>
           <div className="mt-4 space-y-3 text-[15px] leading-relaxed text-mute">
